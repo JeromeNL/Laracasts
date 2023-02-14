@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('posts');
 });
 
-Route::get('post', function(){
-    return view('post');
+Route::get('posts/{post}', function($slug){
+
+    $path = __DIR__ . "/../resources/posts/{$slug}.html";
+
+    if(! file_exists($path)){
+        return redirect('/'); // redirect to other page
+        abort(404); // return 404 error
+        //dd("bestand bestaat niet!"); // send an error
+    }
+    $post = file_get_contents($path);
+
+    return view('post', [
+        'post' => $post
+    ]);
 });
