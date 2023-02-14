@@ -26,9 +26,11 @@ Route::get('posts/{post}', function($slug){
         abort(404); // return 404 error
         //dd("bestand bestaat niet!"); // send an error
     }
-    $post = file_get_contents($path);
+    $post = cache()->remember("posts.{$slug}", now()->addDay(), function() use($path){
+       //var_dump('file_get_contents');
+       return file_get_contents($path);;
+    });
 
-    return view('post', [
-        'post' => $post
-    ]);
+
+    return view('post', ['post' => $post]);
 })->where('post', '[A-z_\-]+');
