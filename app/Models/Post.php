@@ -28,18 +28,17 @@ class Post
     }
 
     public static function all(){
-        return collect(File::files(resource_path("posts")))
-            ->map(fn($file) => YamlFrontMatter::parseFile($file))
-            ->map(fn($document) => new Post(
-                $document->title,
-                $document->description,
-                $document->date,
-                $document->body(),
-                $document->slug
-            ));
-
-//        return array_map(function ($file){
-//            return $file->getContents();
-//        }, $files);
+        return cache()->rememberForever("posts.all", function(){
+            return collect(File::files(resource_path("posts")))
+                ->map(fn($file) => YamlFrontMatter::parseFile($file))
+                ->map(fn($document) => new Post(
+                    $document->title,
+                    $document->description,
+                    $document->date,
+                    $document->body(),
+                    $document->slug
+                ))
+                ->sortByDesc('date');
+        });
     }
 }
