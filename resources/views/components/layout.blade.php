@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-        {{ $slot }}
+@yield('banner')
+
+@yield('content')
 
 </body>
 </html>

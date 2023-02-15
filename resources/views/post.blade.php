@@ -1,5 +1,7 @@
 @extends('components.layout')
 
+@section('banner')
+@endsection
 
 @section('content')
 
