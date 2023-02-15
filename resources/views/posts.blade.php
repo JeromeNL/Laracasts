@@ -1,24 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jeromes Blog</title>
-    <link rel="stylesheet" href="/app.css">
-</head>
-<body>
-@foreach ($posts as $post)
+@extends ('components.layout')
 
-<article>
-    <a href="/posts/{!!   $post->slug !!}">
-       {{ $post->title }}
-    </a>
-    {!! $post->description  !!}
-</article>
+@section('banner')
+    <h1>My blog Title</h1>
+@endsection
 
-@endforeach
 
-</body>
-</html>
+@section('content')
+    @foreach ($posts as $post)
+
+        <article>
+            <a href="/posts/{!!   $post->slug !!}">
+                {{ $post->title }}
+            </a>
+            {!! $post->description  !!}
+        </article>
+
+    @endforeach
+
+@endsection
