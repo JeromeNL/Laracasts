@@ -9,10 +9,20 @@
     @foreach ($posts as $post)
 
         <article>
+            <h1>
             <a href="/posts/{{ $post->slug }}">
                 {!! $post->title !!}
             </a>
-            {!! $post->description  !!}
+            </h1>
+
+
+                <a href="#"> {{ $post->category->name }}</a>
+
+
+            <p>
+                 {!! $post->description  !!}
+            </p>
+
         </article>
 
     @endforeach
