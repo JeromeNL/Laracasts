@@ -10,11 +10,10 @@
 
         <article>
             <a href="/posts/{!!   $post->id !!}">
-                {{ $post->title }}
+                {!! $post->title !!}
             </a>
             {!! $post->description  !!}
         </article>
 
     @endforeach
-
 @endsection

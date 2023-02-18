@@ -8,7 +8,7 @@
     <article>
         <h1>{{$post->title}}</h1>
         <div>
-            {!! $post->description !!}
+            {{ $post->description }}
         </div>
     </article>
 
