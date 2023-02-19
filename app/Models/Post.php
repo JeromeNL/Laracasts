@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Post extends Model
 {
     use HasFactory;
@@ -12,6 +13,14 @@ class Post extends Model
     protected $with = ['category', 'author'];
 
     protected  $fillable = ['title', 'description', 'body'];
+
+    public function scopeFilter($query, array $filters){
+        $query->when($filters['search'] ?? false, function($query, $search){
+            $query
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('body', 'like', '%' . request('search') . '%');
+        });
+    }
 
     public function category(){
         return $this->belongsTo(Category::class);
