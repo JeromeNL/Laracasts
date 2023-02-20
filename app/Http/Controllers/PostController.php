@@ -11,7 +11,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        return view('posts', [
+        return view('posts.index', [
             'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
             'categories' => Category::all()
         ]);
