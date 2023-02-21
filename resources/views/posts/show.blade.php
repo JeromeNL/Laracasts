@@ -50,8 +50,10 @@
                     </div>
                 </div>
 
-                <section class="col-span-8 col-start-5 mt-10">
-                    <x-post-comment></x-post-comment>
+                <section class="col-span-8 col-start-5 mt-10">\
+                    @foreach($post->comments as $comment)
+                     <x-post-comment :comment="$comment"/>
+                    @endforeach
                 </section>
             </article>
         </main>
