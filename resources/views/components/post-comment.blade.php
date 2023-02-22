@@ -8,8 +8,8 @@
         <header>
             <h3 class="font-bold">{{ $comment->author->name }}</h3>
             <p class="text-xs">
-                Posted
-                <time>{{ $comment->created_at }}</time>
+                Posted on
+                <time>{{ $comment->created_at->format('d-m-Y') }}</time>
             </p>
         </header>
         <p> {{ $comment->body }}</p>

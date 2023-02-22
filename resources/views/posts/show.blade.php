@@ -50,7 +50,26 @@
                     </div>
                 </div>
 
-                <section class="col-span-8 col-start-5 mt-10">\
+                <section class="col-span-8 col-start-5 mt-10">
+                    <form method="POST" action="/posts/{{$post->slug}}/comments" class="border border-gray-200 p-6 rounded-xl">
+                        @csrf
+                        <header class="flex items-center">
+                            <h4 class="ml-4">Jerome</h4>
+                        </header>
+
+                        <div>
+                            <textArea  name="body" class="w-full mt-2" placeholder="Type your comment"></textArea>
+                        </div>
+
+                        <div>
+                            <button type="submit">Send</button>
+                        </div>
+
+                    </form>
+
+
+
+
                     @foreach($post->comments as $comment)
                      <x-post-comment :comment="$comment"/>
                     @endforeach
