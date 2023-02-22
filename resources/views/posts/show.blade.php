@@ -58,7 +58,12 @@
                         </header>
 
                         <div>
-                            <textArea  name="body" class="w-full mt-2" placeholder="Type your comment"></textArea>
+                            <textArea  name="body" class="w-full mt-2" placeholder="Type your comment" required></textArea>
+                        </div>
+                        <div class="text-xs text-red-400">
+                            @error('body')
+                                <span>{{$message}}</span>
+                            @enderror
                         </div>
 
                         <div>
